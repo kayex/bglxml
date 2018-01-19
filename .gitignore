@@ -15,3 +15,7 @@ vendor/*
 
 # JetBrains IDE
 .idea/
+
+# Application
+log.txt
+test.xml
