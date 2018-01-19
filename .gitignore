@@ -17,5 +17,6 @@ vendor/*
 .idea/
 
 # Application
+bglxml
 log.txt
 test.xml

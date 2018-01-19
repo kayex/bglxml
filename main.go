@@ -2,20 +2,20 @@ package main
 
 import (
 	"flag"
-	"strings"
-	"os/exec"
 	"fmt"
-	"os"
-	"path/filepath"
-	"log"
 	"io"
+	"log"
+	"os"
+	"os/exec"
+	"path/filepath"
+	"strings"
 )
 
 const logFile = "log.txt"
-const preCompiledXmlDir = "C:\\Users\\Adam\\Desktop\\FS2XPlane"
+const PreCompiledXMLDir = "C:\\Users\\Adam\\Desktop\\FS2XPlane"
 
 func main() {
-	f, err := os.OpenFile(logFile, os.O_RDWR | os.O_CREATE | os.O_APPEND, 0666)
+	f, err := os.OpenFile(logFile, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		panic(err)
 	}
@@ -41,7 +41,7 @@ func run(src, dst string) error {
 	var err error
 	ls := fmt.Sprintf("Converting %q -> %q: ", src, dst)
 
-	if c := getPreCompiledXMLPath(preCompiledXmlDir, src); c != "" {
+	if c := getPreCompiledXMLPath(PreCompiledXMLDir, src); c != "" {
 		Copy(c, dst)
 		ls += fmt.Sprintf("Replaced with %q", c)
 	} else {
