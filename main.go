@@ -12,7 +12,7 @@ import (
 )
 
 const logFile = "log.txt"
-const PreCompiledXMLDir = "C:\\Users\\Adam\\Desktop\\FS2XPlane"
+const preCompiledXMLDir = "C:\\Users\\Adam\\Desktop\\FS2XPlane"
 
 func main() {
 	f, err := os.OpenFile(logFile, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
@@ -41,7 +41,7 @@ func run(src, dst string) error {
 	var err error
 	ls := fmt.Sprintf("Converting %q -> %q: ", src, dst)
 
-	if c := getPreCompiledXMLPath(PreCompiledXMLDir, src); c != "" {
+	if c := getPreCompiledXMLPath(preCompiledXMLDir, src); c != "" {
 		Copy(c, dst)
 		ls += fmt.Sprintf("Replaced with %q", c)
 	} else {
