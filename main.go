@@ -42,16 +42,16 @@ func run(src, dst string) error {
 	ls := fmt.Sprintf("Converting %q -> %q: ", src, dst)
 
 	if c := getPreCompiledXMLPath(preCompiledXMLDir, src); c != "" {
-		Copy(c, dst)
-		ls += fmt.Sprintf("Replaced with %q", c)
+		err = Copy(c, dst)
+		ls += fmt.Sprintf("Replacing with %q... ", c)
 	} else {
 		err = convert(src, dst)
+	}
 
-		if err != nil {
-			ls += fmt.Sprintf("Failed: %v", err)
-		} else {
-			ls += "Successful."
-		}
+	if err != nil {
+		ls += fmt.Sprintf("Failed: %v", err)
+	} else {
+		ls += "Successful."
 	}
 
 	log.Println(ls)
